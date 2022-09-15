@@ -5,7 +5,7 @@ const Constraint = Matter.Constraint;
 
 var engine, world;
 var canvas;
-var palyer, playerBase, playerArcher;
+var player, playerBase, playerimage, backgroundImg;
 var baseimage;
 
 function preload() {
@@ -25,24 +25,19 @@ function setup() {
   playerBase = Bodies.rectangle(300, 500, 180, 150);
 
   //criar corpo do jogador
-  player = new Player(285, playerBase.body.position.y - 153, 50, 180);
+  player = Bodies.rectangle(360, playerBase.position.y - 165, 50, 180);
 
-  playerArcher = new PlayerArcher(
-    340,
-    playerBase.body.position.y - 180,
-    120,
-    120
-  );
+  
 }
 
 function draw() {
   background(backgroundImg);
 
   //exibir a imagem do jogador usando a função image()
-  player.display();
+  image(playerimage, player.position.x, player.position.y, 50, 180);
 
   //exibir a imagem da base do jogador usando a função image()
-  playerBase.display();
+  image(baseimage, playerBase.position.x, playerBase.position.y, 180, 150);
 
   Engine.update(engine);
 
